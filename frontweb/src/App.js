@@ -9,6 +9,9 @@ import Costos from './pages/costos'
 import Dias from './pages/dias'
 import Renta from './pages/renta'
 import Vehiculos from './pages/vehiculos'
+import Inicio from './pages/inicio'
+import Simular from './pages/simular'
+
 
 function App() {
   return (
@@ -19,6 +22,8 @@ function App() {
       <Route path="/Dias" exact Component={Dias}></Route>
       <Route path="/Renta" exact Component={Renta}></Route>
       <Route path="/Vehiculos" exact Component={Vehiculos}></Route>
+      <Route path="/Inicio" exact Component={Inicio}></Route>
+      <Route path="/Simular" exact Component={Simular}></Route>
       </Routes>
     </Router>
   );
