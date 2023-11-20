@@ -1,0 +1,25 @@
+.table-container {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+/* Estilo opcional para las tablas */
+table {
+    border-collapse: collapse;
+    
+
+   
+}
+
+
+th, td {
+    border: 1px solid #050505;
+    padding: 8px;
+    text-align: left;
+   
+}
+
+th {
+    background-color: #91A3FF;
+}
