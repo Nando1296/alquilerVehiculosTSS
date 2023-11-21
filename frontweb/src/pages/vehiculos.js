@@ -33,10 +33,10 @@ export default class Vehiculos extends Component {
                   <img src={vehiculo.foto} alt={`${vehiculo.marca} ${vehiculo.modelo}`} className='foto-vehiculo' />
                   <div className="textos">
                     <h3>Datos del vehículo</h3>
-                    <p>Marca: {vehiculo.marca}</p>
-                    <p>Modelo: {vehiculo.modelo}</p>
-                    <p>Tipo: {vehiculo.tipo}</p>
-                    <p>Costo: {vehiculo.costo}</p>
+                    <h5>Marca: {vehiculo.marca}</h5>
+                    <h5>Modelo: {vehiculo.modelo}</h5>
+                    <h5>Tipo: {vehiculo.tipo}</h5>
+                    <h5>Costo: {vehiculo.costo}</h5>
                   </div>
                 </div>
             ))}

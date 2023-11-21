@@ -4,8 +4,14 @@ import '../assets/form.css'
 export default class Dias extends Component {
   render() {
     return (
+<<<<<<< HEAD
 		<div class='container"'>
 		<div class="main">
+=======
+		<div>
+        <div class="container">
+			<div class="main">
+>>>>>>> jenny
       <div class='main-center'>
         <form class="" method="post" action="#">
 						
@@ -21,6 +27,7 @@ export default class Dias extends Component {
             <form class="" method="post" action="#">
 						
 						<div class="form-group">
+							<br></br>
 							<label for="name">N° de Dias de Renta</label>
 								<div class="input-group">
 				<input type="text" class="form-control"/>
@@ -34,6 +41,10 @@ export default class Dias extends Component {
       </div>
 	  </div>
 	  </div>
+<<<<<<< HEAD
+=======
+	  </div>
+>>>>>>> jenny
     )
   }
 }
