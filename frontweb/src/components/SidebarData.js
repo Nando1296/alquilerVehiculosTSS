@@ -6,7 +6,7 @@ import { VscDebugStart } from "react-icons/vsc";
 export const SidebarData = [
   {
     title: 'Inicio',
-    path: '/Inicio',
+    path: '/',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },

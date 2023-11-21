@@ -40,9 +40,9 @@ td{
     table-layout: fixed;
     border-collapse: collapse;
     border: solid 1px black;
-    border-radius: 25px;
     padding: 10px;
     text-align: center;
+    background-color: white;
 }
 
 .titulo{
@@ -52,14 +52,4 @@ h1{
     text-align: center;
     font-style: italic;
 
-}
-
-button{
-    background-color: mediumslateblue;
-    align-items: end;
-    float: right;
-    color: #ffffff;
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
 }
