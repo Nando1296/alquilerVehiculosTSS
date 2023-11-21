@@ -4,14 +4,9 @@ import '../assets/form.css'
 export default class Dias extends Component {
   render() {
     return (
-<<<<<<< HEAD
-		<div class='container"'>
-		<div class="main">
-=======
 		<div>
         <div class="container">
 			<div class="main">
->>>>>>> jenny
       <div class='main-center'>
         <form class="" method="post" action="#">
 						
@@ -41,10 +36,7 @@ export default class Dias extends Component {
       </div>
 	  </div>
 	  </div>
-<<<<<<< HEAD
-=======
 	  </div>
->>>>>>> jenny
     )
   }
 }
