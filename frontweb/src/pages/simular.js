@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../assets/stylestabla.css'
+import '../assets/renta.css'
 
 export default class Simular extends Component {
   render() {

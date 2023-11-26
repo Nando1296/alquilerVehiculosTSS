@@ -11,12 +11,19 @@ table {
 
    
 }
+.titulo{
+    font-size: 30px;
+    text-align: center;
+}
 
-
+h1{
+    text-align: center;
+    font-style: italic;
+}
 th, td {
     border: 1px solid #050505;
     padding: 8px;
-    text-align: left;
+    text-align: center;
    
 }
 

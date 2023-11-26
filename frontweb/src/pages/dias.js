@@ -8,6 +8,7 @@ export default class Dias extends Component {
         <div class="container">
 			<div class="main">
       <div class='main-center'>
+			
         <form class="" method="post" action="#">
 						
 						<div class="form-group">
