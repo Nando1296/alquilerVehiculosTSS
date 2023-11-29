@@ -2,6 +2,7 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { VscDebugStart } from "react-icons/vsc";
+import { TfiBarChart } from "react-icons/tfi";
 
 export const SidebarData = [
   {
@@ -38,6 +39,13 @@ export const SidebarData = [
     title: 'Simular',
     path: '/Simular',
     icon: <VscDebugStart />,
+    cName: 'nav-text'
+  },
+
+  {
+    title: 'Reporte',
+    path: '/Reporte',
+    icon: <TfiBarChart />,
     cName: 'nav-text'
   }
 ];

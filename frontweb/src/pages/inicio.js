@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import '../assets/inicio.css'
 
 export default class Inicio extends Component {
@@ -27,6 +28,12 @@ export default class Inicio extends Component {
         </p>
         <br></br>
         <img src="alquiler.png" alt=''></img>
+
+        <div class="ml-auto">
+            <Link to="/Vehiculos">
+              <button id="btn1" className="btn1 btn-primary" type="">Siguiente</button>
+            </Link> 
+        </div>
       </div>
     )
   }

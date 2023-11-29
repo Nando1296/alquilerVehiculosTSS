@@ -11,6 +11,7 @@ import Renta from './pages/renta'
 import Vehiculos from './pages/vehiculos'
 import Inicio from './pages/inicio'
 import Simular from './pages/simular'
+import Reporte from './pages/reporte';
 
 
 function App() {
@@ -18,12 +19,13 @@ function App() {
     <Router>
       <Navbar></Navbar>
       <Routes>
+      <Route path="/" exact Component={Inicio}></Route>
+      <Route path="/Vehiculos" exact Component={Vehiculos}></Route>
       <Route path="/Costos" exact Component={Costos}></Route>
       <Route path="/Dias" exact Component={Dias}></Route>
       <Route path="/Renta" exact Component={Renta}></Route>
-      <Route path="/Vehiculos" exact Component={Vehiculos}></Route>
-      <Route path="/" exact Component={Inicio}></Route>
       <Route path="/Simular" exact Component={Simular}></Route>
+      <Route path="/Reporte" exact Component={Reporte}></Route>
       </Routes>
     </Router>
   );

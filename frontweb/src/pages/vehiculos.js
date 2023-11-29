@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './vehiculos.css';
+import { Link } from 'react-router-dom';
 
 export default class Vehiculos extends Component {
   
@@ -21,7 +22,12 @@ export default class Vehiculos extends Component {
         {id:11 , marca:'JEEP', modelo:'Wrangler', tipo:'Todo Terreno', costo:'500 Bs.', foto:'images/Wrangler.png'},
         {id:12 , marca:'JEEP', modelo:'Renegade', tipo:'Todo Terreno', costo:'500 Bs.', foto:'images/Renegade.png'},
       ],
+      vehiculoSeleccionado: null,
     };
+  }
+
+  handleCardClick = (vehiculo) => {
+    this.setState({ vehiculoSeleccionado: vehiculo });
   }
 
   render() {
@@ -29,7 +35,10 @@ export default class Vehiculos extends Component {
       <div class="vehiculos">
           <div class="contenedor-vehiculos">
             {this.state.vehiculos.map(vehiculo => (
-                <div key={vehiculo.id} className="card">
+                <div key={vehiculo.id}
+                 className={`card ${vehiculo === this.state.vehiculoSeleccionado ? 'seleccionado' : ''}`}
+                 onClick={() => this.handleCardClick(vehiculo)}
+                >
                   <img src={vehiculo.foto} alt={`${vehiculo.marca} ${vehiculo.modelo}`} className='foto-vehiculo' />
                   <div className="textos">
                     <h3>Datos del vehículo</h3>
@@ -43,7 +52,17 @@ export default class Vehiculos extends Component {
           </div>
 
           <div class="ml-auto">
-              <button id="btn4" className="btn4 btn-primary" type="">Siguiente</button>
+            <Link to="/Renta">
+              <button id="btn2" 
+              className="btn2 btn-primary" 
+              type="" 
+              onClick={() => {
+                console.log('Vehículo seleccionado: ' , this.state.vehiculoSeleccionado);
+              }}
+              >
+                Siguiente
+              </button>
+            </Link>
           </div>
       </div>
     )

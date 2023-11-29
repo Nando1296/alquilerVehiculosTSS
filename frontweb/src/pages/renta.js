@@ -1,133 +1,153 @@
-import React, { Component } from 'react'
-import "./renta.css"
+import React, { Component } from 'react';
+import './renta.css';
 
 export default class Renta extends Component {
-  render() {
+constructor(props) {
+    super(props);
+    this.state = {
+    diasRentadosPorAuto: 4,
+    autosRentadosPorDia: 4,
+    maxDias: 7,
+    maxAutos: 10,
+    frecuenciaDias: [
+        { dias: 1, probabilidad: 0.4, probAcumulada: 0.4 },
+        { dias: 2, probabilidad: 0.35, probAcumulada: 0.75 },
+        { dias: 3, probabilidad: 0.15, probAcumulada: 0.9 },
+        { dias: 4, probabilidad: 0.1, probAcumulada: 1 },
+    ],
+    frecuenciaAutos: [
+        {autos: 0, probabilidad: 0.1, probAcumulada: 0.1 },
+        {autos: 1, probabilidad: 0.1, probAcumulada: 0.2 },
+        {autos: 2, probabilidad: 0.25, probAcumulada: 0.45 },
+        {autos: 3, probabilidad: 0.3, probAcumulada: 0.75 },
+        {autos: 4, probabilidad: 0.25, probAcumulada: 1 },
+    ]
+    };
+}
+
+handleDiasRentadosChange = (e) => {
+    const selectedDias = parseInt(e.target.value, 10) || 1;
+    
+    const nuevaFrecuenciaDias = Array.from({ length: selectedDias }, (_, index) => {
+        const prob = 1 / selectedDias;
+        const probAcumuladaDias = (index + 1) * prob;
+        return { dias: index + 1, probabilidad: prob, probAcumulada: probAcumuladaDias };
+});
+
+this.setState({
+    diasRentadosPorAuto: selectedDias,
+    frecuenciaDias: nuevaFrecuenciaDias,
+    });
+};
+
+handleAutosRentadosChange = (e) => {
+    const selectedAutos = parseInt(e.target.value, 10) || 1;
+
+    const nuevaFrecuenciaAutos = Array.from({ length: selectedAutos }, (_, index) => {
+      const prob = 1 / selectedAutos;
+      const probAcumuladaAutos = (index + 1) * prob;
+      return { autos: index + 1, probabilidad: prob, probAcumulada: probAcumuladaAutos }; // Corregido aquí
+    });
+
+    this.setState({
+      autosRentadosPorDia: selectedAutos,
+      frecuenciaAutos: nuevaFrecuenciaAutos,
+    });
+};
+
+render() {
+    const opcionesNumerosDias = Array.from({ length: this.state.maxDias }, (_, index) => index + 1);
+    const opcionesNumerosAutos = Array.from({ length: this.state.maxAutos}, (_, index) => index + 1);
+
+
     return (
       <div>
-
-
-            <body>
-
-            <div class="table-container" id='renta'>
-
-        
-      <br></br>
-      <table>
-        <thead>
-            <tr>
-                <th>N° de dias Rentados por auto</th>
-                <th>4</th>
-            
-            </tr>
-        </thead>
-      
-      </table>
-
-
-      <table>
-        <thead>
-        <tr>
-                <th>N° de autos rentados por dia</th>
-                <th>4</th>
-                </tr>
-        </thead>
-      
-      </table>
-      <br></br>
-      </div>
-
-      <div class="table-container" id='renta'>
-
-        
-            <br></br>
+        <div className="table-container" id="renta">
+          <br></br>
           <table>
-              <thead>
-                  <tr>
-                      <th>N° de dias Rentados por auto</th>
-                      <th>Probabilidad acumulada</th>
-                      <th>Probabilidad</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>0.4</td>
-                      <td>0.4</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>2</td>
-                      <td>0.75</td>
-                      <td>0.35</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>3</td>
-                      <td>0.9</td>
-                      <td>0.15</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>4</td>
-                      <td>1</td>
-                      <td>0.1</td>
-                    
-                  </tr>
-                
-                
-              </tbody>
+            <thead>
+              <tr>
+                <th>N° de dias Rentados por auto</th>
+                <th>
+                  <select
+                    value={this.state.diasRentadosPorAuto}
+                    onChange={this.handleDiasRentadosChange}
+                  >
+                    {opcionesNumerosDias.map((numero) => (
+                      <option key={numero} value={numero}>
+                        {numero}
+                      </option>
+                    ))}
+                  </select>
+                </th>
+              </tr>
+            </thead>
           </table>
 
-        
           <table>
-              <thead>
+            <thead>
               <tr>
-                      <th>N° de autos rentados por dia</th>
-                      <th>Probabilidad acumulada</th>
-                      <th>Probabilidad</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>0</td>
-                      <td>0.1</td>
-                      <td>0.10</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>1</td>
-                      <td>0.2</td>
-                      <td>0.10</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>2</td>
-                      <td>0.25</td>
-                      <td>0.45</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>3</td>
-                      <td>0.75</td>
-                      <td>0.30</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>4</td>
-                      <td>1</td>
-                      <td>0.75</td>
-                    
-                  </tr>
-                  
-                  
-              </tbody>
+                <th>N° de días rentados por auto</th>
+                <th>Probabilidad</th>
+                <th>Probabilidad Acumulada</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.frecuenciaDias.map((item) => (
+                <tr key={item.dias}>
+                  <td>{item.dias}</td>
+                  <td>{item.probabilidad.toFixed(2)}</td>
+                  <td>{item.probAcumulada.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
           <br></br>
-      </div>
+        </div>
 
-</body>
+        <div className="table-container" id="renta">
+          <br></br>
+          <table>
+            <thead>
+              <tr>
+                <th>N° de autos Rentados por día</th>
+                <th>
+                  <select
+                    value={this.state.autosRentadosPorDia}
+                    onChange={this.handleAutosRentadosChange}
+                  >
+                    {opcionesNumerosAutos.map((numero) => (
+                      <option key={numero} value={numero}>
+                        {numero}
+                      </option>
+                    ))}
+                  </select>
+                </th>
+              </tr>
+            </thead>
+          </table>
+
+          <table>
+            <thead>
+              <tr>
+                <th>N° de autos rentados por día</th>
+                <th>Probabilidad</th>
+                <th>Probabilidad Acumulada</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.frecuenciaAutos.map((item) => (
+                <tr key={item.autos}>
+                  <td>{item.autos}</td>
+                  <td>{item.probabilidad.toFixed(2)}</td>
+                  <td>{item.probAcumulada.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <br></br>
+        </div>
       </div>
-    )
+    );
   }
 }

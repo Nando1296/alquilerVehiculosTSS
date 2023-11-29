@@ -35,11 +35,15 @@
     align-items: center;
 }
 
-.btn4 {
+.btn2 {
     width: 240px;
     height: 80px;
     margin-top: 20px; 
     margin-left: 960px; 
     background-color: #91a2ff;
     border-radius: 20px;
+}
+
+.card.seleccionado {
+    border: 6px solid #91a2ff; /* Borde para resaltar la tarjeta seleccionada */
 }
