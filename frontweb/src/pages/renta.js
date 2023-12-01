@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './renta.css';
+import store from './store';
+import { Link } from 'react-router-dom';
 
 export default class Renta extends Component {
 constructor(props) {
@@ -46,7 +48,7 @@ handleAutosRentadosChange = (e) => {
     const nuevaFrecuenciaAutos = Array.from({ length: selectedAutos }, (_, index) => {
       const prob = 1 / selectedAutos;
       const probAcumuladaAutos = (index + 1) * prob;
-      return { autos: index + 1, probabilidad: prob, probAcumulada: probAcumuladaAutos }; // Corregido aquí
+      return { autos: index + 1, probabilidad: prob, probAcumulada: probAcumuladaAutos };
     });
 
     this.setState({
@@ -54,6 +56,24 @@ handleAutosRentadosChange = (e) => {
       frecuenciaAutos: nuevaFrecuenciaAutos,
     });
 };
+
+storeDiasAutos = () => {
+  store.dispatch({
+    type: 'GUARDAR_DIAS_POR_AUTO',
+    payload: {
+      diasRentadosPorAuto: this.state.diasRentadosPorAuto,
+      frecuenciaDias: this.state.frecuenciaDias,
+    }
+  });
+
+  store.dispatch({
+    type: 'GUARDAR_AUTOS_POR_DIA',
+    payload: {
+      autosRentadosPorDia: this.state.autosRentadosPorDia,
+      frecuenciaAutos: this.state.frecuenciaAutos,
+    }
+  });
+}
 
 render() {
     const opcionesNumerosDias = Array.from({ length: this.state.maxDias }, (_, index) => index + 1);
@@ -147,6 +167,19 @@ render() {
           </table>
           <br></br>
         </div>
+
+        <div className="ml-auto">
+        <Link to="/Costos">
+          <button
+            id="btn3"
+            className="btn3 btn-primary"
+            type=""
+            onClick={this.storeDiasAutos}
+          >
+            Siguiente
+          </button>
+        </Link>
+      </div>
       </div>
     );
   }

@@ -24,12 +24,6 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Dias',
-    path: '/Dias',
-    icon: <FaIcons.FaCalendarAlt />,
-    cName: 'nav-text'
-  },
-  {
     title: 'Costos',
     path: '/Costos',
     icon: <FaIcons.FaMoneyBill />,

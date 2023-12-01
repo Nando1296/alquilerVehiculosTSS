@@ -6,7 +6,6 @@ import './App.css';
 import Navbar from './components/Navbar'
 //pages
 import Costos from './pages/costos'
-import Dias from './pages/dias'
 import Renta from './pages/renta'
 import Vehiculos from './pages/vehiculos'
 import Inicio from './pages/inicio'
@@ -22,7 +21,6 @@ function App() {
       <Route path="/" exact Component={Inicio}></Route>
       <Route path="/Vehiculos" exact Component={Vehiculos}></Route>
       <Route path="/Costos" exact Component={Costos}></Route>
-      <Route path="/Dias" exact Component={Dias}></Route>
       <Route path="/Renta" exact Component={Renta}></Route>
       <Route path="/Simular" exact Component={Simular}></Route>
       <Route path="/Reporte" exact Component={Reporte}></Route>

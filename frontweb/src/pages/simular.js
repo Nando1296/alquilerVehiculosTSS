@@ -1,178 +1,85 @@
-import React, { Component } from 'react'
-import '../assets/stylestabla.css'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import '../assets/stylestabla.css';
 
-export default class Simular extends Component {
+class Simular extends Component {
   render() {
+    const {
+      vehiculoSeleccionado,
+      diasRentadosPorAuto,
+      frecuenciaDias,
+      autosRentadosPorDia,
+      frecuenciaAutos,
+      datosFormulario,
+    } = this.props;
+
+    // Asegurémonos de que datosFormulario no sea nulo o indefinido
+    const datosFormularioValido = datosFormulario || {};
+
+    // Accedemos a las propiedades de datosFormulario utilizando el operador de encadenamiento opcional (?.)
+    const costoAnual = datosFormularioValido.costoAnual;
+    const costoOcioso = datosFormularioValido.costoOcioso;
+    const costoNoDisponible = datosFormularioValido.costoNoDisponible;
+
     return (
       <div>
         <h1>Tabla de Simulación</h1>
-        <div class= "container">
-            <table>
-                <thead>
-                    <tr>
-                    <th colSpan={9} font-size={20} class="titulo">Simulación</th>
-                    </tr>
-                    <tr>
-                        <th>Día</th>
-                        <th>N°Autos a rentar</th>
-                        <th>Auto</th>
-                        <th>Total disponible</th>
-                        <th>N°Dias a alquilar</th>
-                        <th>Alquiler</th>
-                        <th>Costo ocioso</th>
-                        <th>Días no disponible</th>
-                        <th>Costo no disponible</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>3</td>
-                        <td>toyota</td>
-                        <td>2</td>
-                        <td>5</td>
-                        <td>300</td>
-                        <td>50</td>
-                        <td>5</td>
-                        <td>200</td>
-                    </tr>
-
-                </tbody>
-            </table>
+        <div className="container">
+          <table>
+            <thead>
+              <tr>
+                <th colSpan={9} style={{ fontSize: 20 }} className="titulo">
+                  Simulación
+                </th>
+              </tr>
+              <tr>
+                <th>Vehículo Seleccionado</th>
+                <th>Días Rentados por Auto</th>
+                <th>Frecuencia Días</th>
+                <th>Autos Rentados por Día</th>
+                <th>Frecuencia Autos</th>
+                <th>Costo Anual</th>
+                <th>Costo Ocioso</th>
+                <th>Costo No Disponible</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{vehiculoSeleccionado ? vehiculoSeleccionado.modelo : 'No seleccionado'}</td>
+                <td>{diasRentadosPorAuto}</td>
+                <td>{this.renderProbAcumulada(frecuenciaDias)}</td>
+                <td>{autosRentadosPorDia}</td>
+                <td>{this.renderProbAcumulada(frecuenciaAutos)}</td>
+                <td>{costoAnual}</td>
+                <td>{costoOcioso}</td>
+                <td>{costoNoDisponible}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    )
+    );
+  }
+
+  renderProbAcumulada(array) {
+    if (array) {
+      return array.map((item, index) => (
+        <span key={index}>{index > 0 ? ', ' : ''}{item.probAcumulada}</span>
+      ));
+    }
+    return null;
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    vehiculoSeleccionado: state.vehiculoSeleccionado,
+    diasRentadosPorAuto: state.diasRentadosPorAuto,
+    frecuenciaDias: state.frecuenciaDias,
+    autosRentadosPorDia: state.autosRentadosPorDia,
+    frecuenciaAutos: state.frecuenciaAutos,
+    datosFormulario: state.datosFormulario,
+  };
+};
+
+export default connect(mapStateToProps)(Simular);
