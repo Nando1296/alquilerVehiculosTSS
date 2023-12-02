@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .subrow {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dias</th>
+      <th>Valor Aleatorio</th>
+      <th>Vehiculos a rentar</th>
+      <th>Vehiculos</th>
+      <th>Disponible</th>
+      <th>Total Disponible</th>
+      <th>Valor Aleatorio Dias</th>
+      <th>Dias a rentar</th>
+      <th>Ingreso</th>
+      <th>Ocioso</th>
+      <th>No Disponible (dias)</th>
+      <th>Costo No Disponible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">1</td>
+      <td rowspan="3">0.32</td>
+      <td rowspan="3">2</td>
+      <td rowspan="3">Toyota</td>
+      <td rowspan="3">3</td>
+      <td rowspan="3">4</td>
+      <td>0.75</td>
+      <td>2</td>
+      <td>400</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr class="subrow">
+      <td>0.45</td>
+      <td>3</td>
+      <td>600</td>
+      <td>150</td>
+      <td>1</td>
+      <td>50</td>
+    </tr>
+    <tr class="subrow">
+      <td>0.2</td>
+      <td>1</td>
+      <td>200</td>
+      <td>50</td>
+      <td>2</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td rowspan="1">2</td>
+      <td rowspan="1">0.9</td>
+      <td rowspan="1">4</td>
+      <td rowspan="1">Toyota</td>
+      <td rowspan="1">1</td>
+      <td rowspan="1">1</td>
+      <td>0.75</td>
+      <td>2</td>
+      <td>400</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

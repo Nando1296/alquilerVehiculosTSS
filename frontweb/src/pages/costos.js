@@ -30,6 +30,8 @@ export default class Costos extends Component {
         costoNoDisponible,
       },
     });
+
+    console.log("Estado del store después de despachar la acción:", store.getState());
   };
 
   render() {

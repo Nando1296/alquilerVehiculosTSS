@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './renta.css';
 import store from './store';
 import { Link } from 'react-router-dom';
+import '../assets/stylestabla.css';
 
 export default class Renta extends Component {
 constructor(props) {
@@ -43,13 +44,18 @@ this.setState({
 };
 
 handleAutosRentadosChange = (e) => {
-    const selectedAutos = parseInt(e.target.value, 10) || 1;
+  const selectedAutos = parseInt(e.target.value, 10) || 1;
 
-    const nuevaFrecuenciaAutos = Array.from({ length: selectedAutos }, (_, index) => {
-      const prob = 1 / selectedAutos;
-      const probAcumuladaAutos = (index + 1) * prob;
-      return { autos: index + 1, probabilidad: prob, probAcumulada: probAcumuladaAutos };
-    });
+  const nuevaFrecuenciaAutos = Array.from({ length: selectedAutos + 1 }, (_, index) => {
+    const prob = 1 / (selectedAutos + 1); 
+    const probAcumuladaAutos = (index + 1) * prob;
+    return { autos: index, probabilidad: prob, probAcumulada: probAcumuladaAutos };
+  });
+
+  
+  nuevaFrecuenciaAutos.forEach((item) => {
+    item.probAcumulada = Math.round(item.probAcumulada * 1000) / 1000;
+  });
 
     this.setState({
       autosRentadosPorDia: selectedAutos,
@@ -58,19 +64,22 @@ handleAutosRentadosChange = (e) => {
 };
 
 storeDiasAutos = () => {
+
+  const{diasRentadosPorAuto, frecuenciaDias, autosRentadosPorDia, frecuenciaAutos} = this.state;
+
   store.dispatch({
     type: 'GUARDAR_DIAS_POR_AUTO',
     payload: {
-      diasRentadosPorAuto: this.state.diasRentadosPorAuto,
-      frecuenciaDias: this.state.frecuenciaDias,
+      diasRentadosPorAuto,
+      frecuenciaDias,
     }
   });
 
   store.dispatch({
     type: 'GUARDAR_AUTOS_POR_DIA',
     payload: {
-      autosRentadosPorDia: this.state.autosRentadosPorDia,
-      frecuenciaAutos: this.state.frecuenciaAutos,
+      autosRentadosPorDia,
+      frecuenciaAutos,
     }
   });
 }
