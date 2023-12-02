@@ -6,13 +6,19 @@ import './simular.css';
 
 class Simular extends Component {
 
-    state = {
-        numeroDias: 365,
-        simulacionData: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            numeroDias: 5,
+            simulacionData: [],
+        };
     }
 
     handleNumeroDiasChange = (e) => {
-        this.setState({ numeroDias: parseInt(e.target.value, 10) });
+        const nuevoNumeroDias = parseInt(e.target.value, 10);
+        if (!isNaN(nuevoNumeroDias)) {
+            this.setState({ numeroDias: nuevoNumeroDias });
+        }
     };
 
     handleSimularClick = (e) => {
@@ -26,6 +32,12 @@ class Simular extends Component {
         let simulacionData = this.generateSimulacionData();
         this.setState({ simulacionData });
     
+    };
+
+    handlePruebaClick = (e) => {
+        e.preventDefault();
+        const simulacionData = this.generateSimulacionData();
+        console.log('Datos de simulación generados:', simulacionData);
     };
 
     generateSimulacionData = () => {
@@ -66,19 +78,22 @@ class Simular extends Component {
                     valorAleatorioDias,
                     diasARentarPorVehiculos,
                     //ingreso,
-                    costoOcioso,
+                    //costoOcioso,
                     //diasNoDisponible,
                 }
                 
                 filaVehiculosArray.push(filaVehiculos);
+                //console.log(filaVehiculosArray);
             }
+
+            totalDisponible = this.calcularTotalDisponible(vehiculosARentar);
 
             simulacionData.push({
                 ...filaDia,
                 filaVehiculosArray,
             });
+            console.log(simulacionData);
 
-            totalDisponible = this.calcularTotalDisponible(vehiculosARentar);
         }
 
         return simulacionData;
@@ -199,6 +214,9 @@ class Simular extends Component {
                   >
                     Siguiente
                   </button>
+
+                  <button onClick={this.handlePruebaClick}>Probar Generación de Datos</button>
+
                 </Link>
               </div>
             </div>
