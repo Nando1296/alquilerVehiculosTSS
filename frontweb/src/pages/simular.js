@@ -54,8 +54,8 @@ class Simular extends Component {
 
             const valorAleatorioAutos = this.generarValorAleatorio();
             const vehiculosARentar = this.calcularVehiculosARentar(valorAleatorioAutos, frecuenciaAutos);
+            const costoNoDisponible = this.calcularCostoNoDisponible(totalDisponible, vehiculosARentar);
             
-            let { totalDisponible, costoNoDisponible } = this.calcularTotalDisponible(vehiculosARentar);
             let filaDia = {
                 dia,
                 valorAleatorioAutos,
@@ -67,32 +67,39 @@ class Simular extends Component {
             let filaVehiculosArray= [];
 
             for (let nVehiculo = 1; nVehiculo <= autosRentadosPorDia; nVehiculo++){
-                const vehiculoRentado = nVehiculo <= vehiculosARentar;
-                //disponible
+                let vehiculo = {};
                 const valorAleatorioDias = this.generarValorAleatorio();
                 const diasARentarPorVehiculos = this.calcularDiasARentar(valorAleatorioDias, frecuenciaDias);
-
-                const filaVehiculos = {
+                
+                vehiculo = {
                     nVehiculo,
-                    //disponible,
+                    disponible: diasARentarPorVehiculos === 0,
                     valorAleatorioDias,
                     diasARentarPorVehiculos,
                     //ingreso,
                     //costoOcioso,
-                    //diasNoDisponible,
-                }
+                    diasNoDisponible: diasARentarPorVehiculos,
+                };
                 
-                filaVehiculosArray.push(filaVehiculos);
+                filaVehiculosArray.push(vehiculo);
                 //console.log(filaVehiculosArray);
             }
 
-            totalDisponible = this.calcularTotalDisponible(vehiculosARentar);
+            filaVehiculosArray.forEach(vehiculo => {
+                if(!vehiculo.disponible){
+                    vehiculo.diasNoDisponible -= 1;
+                    if (vehiculo.diasNoDisponible === 0 ){
+                        vehiculo.disponible = true;
+                    }
+                }
+            });
+
+            totalDisponible = this.calcularTotalDisponible(filaVehiculosArray);
 
             simulacionData.push({
                 ...filaDia,
                 filaVehiculosArray,
             });
-            console.log(simulacionData);
 
         }
 
@@ -111,16 +118,22 @@ class Simular extends Component {
         }
     }
 
-    calcularTotalDisponible(vehiculosARentar){
-        const totalAutos = this.props.autosRentadosPorDia;
-        const totalDisponible = totalAutos - vehiculosARentar;
+    calcularTotalDisponible(filaVehiculosArray){
+        const totalDisponible = filaVehiculosArray.filter(vehiculo => vehiculo.disponible).length;
+        return totalDisponible;
+    }
 
-        if(totalDisponible < 0) {
-            const costoNoDisponible = this.props.datosFormulario.costoNoDisponible;
-            return {totalDisponible: 0, costoNoDisponible: costoNoDisponible * Math.abs(totalDisponible)};
+    calcularCostoNoDisponible(totalDisponible, vehiculosARentar){
+        const costoNoDisponible = this.props.costoNoDisponible;
+        //console.log('costoNoDisponible por dia:' , costoNoDisponible);
+        const cantidadNoDisponibles = vehiculosARentar - totalDisponible;
+        //console.log('costoNoDisponible por cantidad:' , cantidadNoDisponibles);
+
+        if((cantidadNoDisponibles) > 0){
+            return costoNoDisponible * cantidadNoDisponibles;
         }
 
-        return {totalDisponible, costoNoDisponible: 0};
+        return 0;
     }
 
     calcularDiasARentar = (valorAleatorioDias, frecuenciaDias) => {
@@ -147,13 +160,31 @@ class Simular extends Component {
                     </thead>
                     <tbody>
                         {simulacionData.map((fila, index) => (
-                            <tr key={index}>
-                                <td>{fila.dia}</td>
-                                <td>{fila.valorAleatorioAutos}</td>
-                                <td>{fila.vehiculosARentar}</td>
-                                <td>{fila.totalDisponible}</td>
-                                <td>{fila.costoNoDisponible}</td>
-                            </tr>
+                            <div key={index}>
+                            <h3>Día {fila.dia}</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Vehículo</th>
+                                        <th>Valor Aleatorio Días</th>
+                                        <th>Días a Rentar</th>
+                                        <th>Disponible</th>
+                                        <th>Días No Disponible</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {fila.filaVehiculosArray.map((vehiculo, vIndex) => (
+                                        <tr key={vIndex}>
+                                            <td>{vehiculo.nVehiculo}</td>
+                                            <td>{vehiculo.valorAleatorioDias}</td>
+                                            <td>{vehiculo.diasARentarPorVehiculos}</td>
+                                            <td>{vehiculo.disponible ? 'Sí' : 'No'}</td>
+                                            <td>{vehiculo.diasNoDisponible}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                         ))}
                     </tbody>
                 </table>
