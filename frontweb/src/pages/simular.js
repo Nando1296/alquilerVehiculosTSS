@@ -194,10 +194,12 @@ class Simular extends Component {
             <th>Valor Aleatorio Autos</th>
             <th>Vehículos a Rentar</th>
             <th>Total Disponible</th>
+            <th>Costo No Disponible</th>
             <th>Costo Ocioso</th>
-            <th colSpan="5">Detalles de Vehículos</th>
+            <th colSpan="6">Detalles de Vehículos</th>
           </tr>
           <tr>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -219,6 +221,7 @@ class Simular extends Component {
                 <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.valorAleatorioAutos}</td>
                 <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.vehiculosARentar}</td>
                 <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.totalDisponible}</td>
+                <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.costoNoDisponible}</td>
                 <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.costoOcioso}</td>
               </tr>
               {/* Filas para los detalles de los vehículos */}
