@@ -29,7 +29,7 @@ export default class Inicio extends Component {
         <br></br>
         <img src="alquiler.png" alt=''></img>
 
-        <div class="ml-auto">
+        <div className="ml-auto">
             <Link to="/Vehiculos">
               <button id="btn1" className="btn1 btn-primary" type="">Siguiente</button>
             </Link> 

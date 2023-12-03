@@ -49,12 +49,14 @@ class Simular extends Component {
         const frecuenciaDias = this.props.frecuenciaDias;
         const costoOcioso = this.props.datosFormulario.costoOcioso;
         let totalDisponible = autosRentadosPorDia;
+        let disponible = true;
 
         for (let dia = 1; dia <= this.state.numeroDias; dia++){
 
             const valorAleatorioAutos = this.generarValorAleatorio();
             const vehiculosARentar = this.calcularVehiculosARentar(valorAleatorioAutos, frecuenciaAutos);
             const costoNoDisponible = this.calcularCostoNoDisponible(totalDisponible, vehiculosARentar);
+            const costoOcioso = this.calcularCostoOcioso(totalDisponible, vehiculosARentar);
             
             let filaDia = {
                 dia,
@@ -62,22 +64,25 @@ class Simular extends Component {
                 vehiculosARentar,
                 totalDisponible,
                 costoNoDisponible,
+                costoOcioso,
             }
 
             let filaVehiculosArray= [];
+            
 
             for (let nVehiculo = 1; nVehiculo <= autosRentadosPorDia; nVehiculo++){
                 let vehiculo = {};
                 const valorAleatorioDias = this.generarValorAleatorio();
                 const diasARentarPorVehiculos = this.calcularDiasARentar(valorAleatorioDias, frecuenciaDias);
+                const ingreso = this.calcularIngreso(costoVehiculoSeleccionado, diasARentarPorVehiculos);
+                
                 
                 vehiculo = {
                     nVehiculo,
                     disponible: diasARentarPorVehiculos === 0,
                     valorAleatorioDias,
                     diasARentarPorVehiculos,
-                    //ingreso,
-                    //costoOcioso,
+                    ingreso,
                     diasNoDisponible: diasARentarPorVehiculos,
                 };
                 
@@ -123,6 +128,17 @@ class Simular extends Component {
         return totalDisponible;
     }
 
+    calcularCostoOcioso(totalDisponible, vehiculosARentar){
+        const costoOcioso = this.props.datosFormulario.costoOcioso;
+        const cantidadOciosos = totalDisponible - vehiculosARentar;
+        
+        if(cantidadOciosos > 0){
+            return cantidadOciosos * costoOcioso;
+        }else{
+            return 0;
+        }
+    }
+
     calcularCostoNoDisponible(totalDisponible, vehiculosARentar){
         const costoNoDisponible = this.props.costoNoDisponible;
         //console.log('costoNoDisponible por dia:' , costoNoDisponible);
@@ -134,6 +150,10 @@ class Simular extends Component {
         }
 
         return 0;
+    }
+
+    calcularIngreso(costoVehiculoSeleccionado, diasARentarPorVehiculos){
+        return costoVehiculoSeleccionado * diasARentarPorVehiculos;
     }
 
     calcularDiasARentar = (valorAleatorioDias, frecuenciaDias) => {
