@@ -16,6 +16,7 @@ const initialState = {
     totalIngresos: 0,
     totalCostoOcioso: 0,
     totalCostoNoDisponible: 0,
+    numeroDias: 365,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -46,6 +47,7 @@ const rootReducer = (state = initialState, action) => {
                 totalIngresos: action.payload.totalIngresos,
                 totalCostoOcioso: action.payload.totalCostoOcioso,
                 totalCostoNoDisponible: action.payload.totalCostoNoDisponible,
+                numeroDias: action.payload.numeroDias,
             }
         default:
             return state;

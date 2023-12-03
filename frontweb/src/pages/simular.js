@@ -10,7 +10,7 @@ class Simular extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            numeroDias: 365,
+            numeroDias: null,
             simulacionData: [],
         };
     }
@@ -123,6 +123,7 @@ class Simular extends Component {
                 totalIngresos,
                 totalCostoOcioso,
                 totalCostoNoDisponible,
+                numeroDias: this.state.numeroDias,
             },
         });
         console.log("Estado del store después de despachar la simulacion:", store.getState());
