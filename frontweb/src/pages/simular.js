@@ -35,11 +35,11 @@ class Simular extends Component {
     
     };
 
-    handlePruebaClick = (e) => {
+    /*handlePruebaClick = (e) => {
         e.preventDefault();
         const simulacionData = this.generateSimulacionData();
         console.log('Datos de simulación generados:', simulacionData);
-    };
+    };*/
 
     generateSimulacionData = () => {
         let simulacionData = [];
@@ -186,48 +186,57 @@ class Simular extends Component {
     renderSimulacionData(simulacionData) {
         return (
             <div>
-                <h2>Resultados de la Simulación</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Día</th>
-                            <th>Valor Aleatorio Autos</th>
-                            <th>Vehículos a Rentar</th>
-                            <th>Total Disponible</th>
-                            <th>Costo No Disponible</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {simulacionData.map((fila, index) => (
-                            <div key={index}>
-                            <h3>Día {fila.dia}</h3>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Vehículo</th>
-                                        <th>Valor Aleatorio Días</th>
-                                        <th>Días a Rentar</th>
-                                        <th>Disponible</th>
-                                        <th>Días No Disponible</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {fila.filaVehiculosArray.map((vehiculo, vIndex) => (
-                                        <tr key={vIndex}>
-                                            <td>{vehiculo.nVehiculo}</td>
-                                            <td>{vehiculo.valorAleatorioDias}</td>
-                                            <td>{vehiculo.diasARentarPorVehiculos}</td>
-                                            <td>{vehiculo.disponible ? 'Sí' : 'No'}</td>
-                                            <td>{vehiculo.diasNoDisponible}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+      <h2>Resultados de la Simulación</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Valor Aleatorio Autos</th>
+            <th>Vehículos a Rentar</th>
+            <th>Total Disponible</th>
+            <th>Costo Ocioso</th>
+            <th colSpan="5">Detalles de Vehículos</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Número de Vehículo</th>
+            <th>Disponible</th>
+            <th>Valor Aleatorio Días</th>
+            <th>Días a Rentar</th>
+            <th>Ingreso</th>
+            <th>Días No Disponible</th>
+          </tr>
+        </thead>
+        <tbody>
+          {simulacionData.map((fila, index) => (
+            <React.Fragment key={index}>
+              <tr>
+                <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.dia}</td>
+                <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.valorAleatorioAutos}</td>
+                <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.vehiculosARentar}</td>
+                <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.totalDisponible}</td>
+                <td rowSpan={fila.filaVehiculosArray.length + 1}>{fila.costoOcioso}</td>
+              </tr>
+              {/* Filas para los detalles de los vehículos */}
+              {fila.filaVehiculosArray.map((vehiculo, vIndex) => (
+                <tr key={vIndex}>
+                  <td>{vehiculo.nVehiculo}</td>
+                  <td>{vehiculo.disponible ? 'Sí' : 'No'}</td>
+                  <td>{vehiculo.valorAleatorioDias}</td>
+                  <td>{vehiculo.diasARentarPorVehiculos}</td>
+                  <td>{vehiculo.ingreso}</td>
+                  <td>{vehiculo.diasNoDisponible}</td>
+                </tr>
+              ))}
+            </React.Fragment>
+          ))}
+        </tbody>
+      </table>
+    </div>
         );
     }
 
@@ -285,12 +294,10 @@ class Simular extends Component {
                   >
                     Siguiente
                   </button>
-
-                  <button onClick={this.handlePruebaClick}>Probar Generación de Datos</button>
-
                 </Link>
               </div>
             </div>
+            {this.renderSimulacionData(this.state.simulacionData)}
           </form>
         );
     }
