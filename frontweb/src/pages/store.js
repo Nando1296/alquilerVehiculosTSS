@@ -11,6 +11,11 @@ const initialState = {
         costoOcioso: null,
         costoNoDisponible: null,
     },
+
+    //simulacionData: [],
+    totalIngresos: 0,
+    totalCostoOcioso: 0,
+    totalCostoNoDisponible: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -34,6 +39,14 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 datosFormulario: action.payload,
             };
+        case 'SET_SIMULACION_DATA':
+            return {
+                ...state,
+                //simulacionData: action.payload.simulacionData,
+                totalIngresos: action.payload.totalIngresos,
+                totalCostoOcioso: action.payload.totalCostoOcioso,
+                totalCostoNoDisponible: action.payload.totalCostoNoDisponible,
+            }
         default:
             return state;
     }

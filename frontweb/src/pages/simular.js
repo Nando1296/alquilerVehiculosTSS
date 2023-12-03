@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 //import '../assets/stylestabla.css';
 import { Link } from 'react-router-dom';
 import './simular.css';
+import store from './store';
 
 class Simular extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            numeroDias: 5,
+            numeroDias: 365,
             simulacionData: [],
         };
     }
@@ -42,6 +43,9 @@ class Simular extends Component {
 
     generateSimulacionData = () => {
         let simulacionData = [];
+        let totalIngresos = 0;
+        let totalCostoOcioso = 0;
+        let totalCostoNoDisponible = 0;
 
         const costoVehiculoSeleccionado = this.props.vehiculoSeleccionado.costo;
         const autosRentadosPorDia = this.props.autosRentadosPorDia;
@@ -50,6 +54,7 @@ class Simular extends Component {
         const costoOcioso = this.props.datosFormulario.costoOcioso;
         let totalDisponible = autosRentadosPorDia;
         let disponible = true;
+        
 
         for (let dia = 1; dia <= this.state.numeroDias; dia++){
 
@@ -58,6 +63,9 @@ class Simular extends Component {
             const costoNoDisponible = this.calcularCostoNoDisponible(totalDisponible, vehiculosARentar);
             const costoOcioso = this.calcularCostoOcioso(totalDisponible, vehiculosARentar);
             
+            totalCostoOcioso += costoOcioso;
+            totalCostoNoDisponible += costoNoDisponible;
+
             let filaDia = {
                 dia,
                 valorAleatorioAutos,
@@ -76,6 +84,7 @@ class Simular extends Component {
                 const diasARentarPorVehiculos = this.calcularDiasARentar(valorAleatorioDias, frecuenciaDias);
                 const ingreso = this.calcularIngreso(costoVehiculoSeleccionado, diasARentarPorVehiculos);
                 
+                totalIngresos += ingreso;
                 
                 vehiculo = {
                     nVehiculo,
@@ -108,6 +117,15 @@ class Simular extends Component {
 
         }
 
+        store.dispatch({
+            type: 'SET_SIMULACION_DATA',
+            payload: {
+                totalIngresos,
+                totalCostoOcioso,
+                totalCostoNoDisponible,
+            },
+        });
+        console.log("Estado del store después de despachar la simulacion:", store.getState());
         return simulacionData;
     };
 
@@ -262,6 +280,7 @@ class Simular extends Component {
                     id="btnR"
                     className="btnR btn-primary"
                     type=""
+                    onClick={this.handleSiguienteClick}
                   >
                     Siguiente
                   </button>

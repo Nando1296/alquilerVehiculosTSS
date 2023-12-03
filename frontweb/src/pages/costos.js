@@ -16,7 +16,8 @@ export default class Costos extends Component {
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const parsedValue = parseInt(value, 10);
+    this.setState({ [name]: isNaN(parsedValue) ? '': parsedValue });
   };
 
   handleSiguienteClick = () => {
@@ -55,6 +56,7 @@ export default class Costos extends Component {
                       id="costoAnual"
                       placeholder="Ingrese el costo anual de un coche"
                       onChange={this.handleInputChange}
+                      value={this.state.costoAnual}
                     />
                   </div>
                 </div>
@@ -71,6 +73,7 @@ export default class Costos extends Component {
                       name="costoOcioso"
                       placeholder="Ingrese el costo de tener un auto ocioso"
                       onChange={this.handleInputChange}
+                      value={this.state.costoOcioso}
                     />
                   </div>
                 </div>
@@ -87,6 +90,7 @@ export default class Costos extends Component {
                       name="costoNoDisponible"
                       placeholder="Ingrese el costo por no tener un auto disponible para rentar"
                       onChange={this.handleInputChange}
+                      value={this.state.costoNoDisponible}
                     />
                   </div>
                 </div>
