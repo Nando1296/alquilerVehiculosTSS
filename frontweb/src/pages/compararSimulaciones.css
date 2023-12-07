@@ -1,0 +1,13 @@
+.datos-comparacion {
+    margin-top: 10px; /* Ajusta el margen superior según tus necesidades */
+  }
+  
+  .datos-comparacion p {
+    margin-bottom: 5px; /* Ajusta el margen inferior del párrafo según tus necesidades */
+  }
+  
+  .datos-comparacion ul {
+    margin-top: 0; /* Elimina el margen superior de la lista desordenada */
+    margin-bottom: 10px; /* Ajusta el margen inferior de la lista desordenada según tus necesidades */
+  }
+  
