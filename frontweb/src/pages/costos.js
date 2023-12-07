@@ -54,7 +54,6 @@ export default class Costos extends Component {
                       className="form-control"
                       name="costoAnual"
                       id="costoAnual"
-                      placeholder="Ingrese el costo anual de un coche"
                       onChange={this.handleInputChange}
                       value={this.state.costoAnual}
                     />
@@ -71,7 +70,6 @@ export default class Costos extends Component {
                       type="text"
                       className="form-control"
                       name="costoOcioso"
-                      placeholder="Ingrese el costo de tener un auto ocioso"
                       onChange={this.handleInputChange}
                       value={this.state.costoOcioso}
                     />
@@ -88,7 +86,6 @@ export default class Costos extends Component {
                       type="text"
                       className="form-control"
                       name="costoNoDisponible"
-                      placeholder="Ingrese el costo por no tener un auto disponible para rentar"
                       onChange={this.handleInputChange}
                       value={this.state.costoNoDisponible}
                     />

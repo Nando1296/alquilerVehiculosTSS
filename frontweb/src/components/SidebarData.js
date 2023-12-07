@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { VscDebugStart } from "react-icons/vsc";
 import { TfiBarChart } from "react-icons/tfi";
+import { HiMiniTableCells } from "react-icons/hi2";
 
 export const SidebarData = [
   {
@@ -40,6 +41,13 @@ export const SidebarData = [
     title: 'Reporte',
     path: '/Reporte',
     icon: <TfiBarChart />,
+    cName: 'nav-text'
+  },
+
+  {
+    title: 'Resultados Anteriores',
+    path: '/ResultadosAnteriores',
+    icon:<HiMiniTableCells />,
     cName: 'nav-text'
   }
 ];

@@ -43,7 +43,7 @@ const rootReducer = (state = initialState, action) => {
         case 'SET_SIMULACION_DATA':
             return {
                 ...state,
-                //simulacionData: action.payload.simulacionData,
+                simulacionData: action.payload.simulacionData,
                 totalIngresos: action.payload.totalIngresos,
                 totalCostoOcioso: action.payload.totalCostoOcioso,
                 totalCostoNoDisponible: action.payload.totalCostoNoDisponible,

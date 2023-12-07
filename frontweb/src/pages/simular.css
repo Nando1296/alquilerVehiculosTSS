@@ -1,16 +1,44 @@
-.btnR {
-    width: 240px;
+/* En simular.css */
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no haya suficiente espacio */
+    justify-content: space-between; /* Alinea los elementos a ambos lados del contenedor */
+}
+
+.card.simular {
+    border-radius: 20px;
+    min-height: 150px;
+    font-weight: bold;
+    padding: 10px;
+    overflow: hidden;
+    width: 40%;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+}
+
+.container-simular {
+    width: 50%;
+}
+
+.input-simular {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.btnS, .btnR {
+    width: 100%;
     height: 80px;
     margin-top: 20px; 
-    margin-left: 960px; 
     background-color: #91a2ff;
     border-radius: 20px;
 }
-.btnS {
-    width: 240px;
-    height: 80px;
-    margin-top: 20px; 
-    margin-left: 960px; 
-    background-color: #91a2ff;
-    border-radius: 20px;
+
+/* Estilo para la tabla de simulación */
+.simulacion-table {
+    width: 100%;
+    margin-top: 20px; /* Ajusta según sea necesario */
+    margin-bottom: 20px;
 }
