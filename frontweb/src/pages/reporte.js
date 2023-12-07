@@ -64,7 +64,20 @@ class Reporte extends Component {
 
   render() {
 
-    const { vehiculoSeleccionado } = this.props;
+    const {
+      vehiculoSeleccionado,
+      costoAnual,
+      autosRentadosPorDia,
+      totalIngresos,
+      totalCostoOcioso,
+      totalCostoNoDisponible,
+      numeroDias,
+    } = this.props;
+
+    const costoTotalUtilizacion = ((costoAnual / 365) * numeroDias * autosRentadosPorDia );
+    const totalEgresos = (parseFloat(costoTotalUtilizacion) + parseFloat(totalCostoOcioso) + parseFloat(totalCostoNoDisponible));
+    const gananciaNeta = (totalIngresos - parseFloat(totalEgresos));
+    
 
       if(!vehiculoSeleccionado) {
         return (
@@ -75,24 +88,41 @@ class Reporte extends Component {
         );
       }
 
+      const renderVehiculoSeleccionado = () => {
+        const { vehiculoSeleccionado } = this.props;
+  
+      if (!vehiculoSeleccionado) {
+        return null;
+      }
+  
+      return (
+        <div className={`card simular`}>
+          <img src={vehiculoSeleccionado.foto} alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`} className='foto-vehiculo' />
+          <div className="textos">
+            <h3>Datos del vehículo</h3>
+            <h5>Marca: {vehiculoSeleccionado.marca}</h5>
+            <h5>Modelo: {vehiculoSeleccionado.modelo}</h5>
+            <h5>Tipo: {vehiculoSeleccionado.tipo}</h5>
+            <h5>Costo: {vehiculoSeleccionado.costo} Bs.</h5>
+          </div>
+        </div>
+      );
+    };
+
     return (
       <div className='reporte'>
         <h1>Informe de Simulación</h1>
-        <h2>Datos del vehiculo:</h2>
-        <h3>Marca: {this.props.vehiculoSeleccionado.marca} </h3>
-        <h3>Modelo: {this.props.vehiculoSeleccionado.modelo} </h3>
-        <h3>Tipo: {this.props.vehiculoSeleccionado.tipo} </h3>
-        <h3>Costo: {this.props.vehiculoSeleccionado.costo} Bs.</h3>
+        {renderVehiculoSeleccionado()}
         <h3>Renta Total: {this.props.totalIngresos} Bs.</h3>
-        <h3>Costo total de utilización de coches: {this.props.costoTotalUtilizacion} Bs.</h3>
+        <h3>Costo total de utilización de coches: {costoTotalUtilizacion} Bs.</h3>
         <h3>Costo total carro ocioso: {this.props.totalCostoOcioso} Bs.</h3>
         <h3>Costo total no disponible: {this.props.totalCostoNoDisponible} Bs.</h3>
-        <h2>Total Egresos: {this.props.totalEgresos} Bs.</h2>
-        <h2>Ganancia neta: {this.props.gananciaNeta} Bs.</h2>
+        <h2>Total Egresos: {totalEgresos} Bs.</h2>
+        <h2>Ganancia neta: {gananciaNeta} Bs.</h2>
         
         <h3>Se generan unos ingresos brutos de {this.props.totalIngresos} Bs. en un periodo de {this.props.numeroDias} días.</h3>
-        <h3>Se genera un gasto de {this.props.totalEgresos}.</h3>
-        <h3>Se genera una ganancia de {this.props.gananciaNeta}.</h3>
+        <h3>Se genera un gasto de {totalEgresos} Bs.</h3>
+        <h3>Se genera una ganancia de {gananciaNeta} Bs.</h3>
 
         <div className="ml-auto">
             <Link to="/ResultadosAnteriores">

@@ -27,7 +27,7 @@ function App() {
       <Route path="/Simular" exact Component={Simular}></Route>
       <Route path="/Reporte" exact Component={Reporte}></Route>
       <Route path="/ResultadosAnteriores" exact Component={ResultadosAnteriores}></Route>
-      <Route path="/CompararSimulaciones" exact Component={CompararSimulaciones}></Route>
+      <Route path="/CompararSimulaciones/:ids" exact Component={CompararSimulaciones}></Route>
       <Route path="ResultadoAnterior/:id" exact Component={DetalleSimulacionAnterior}></Route>
       </Routes>
     </Router>

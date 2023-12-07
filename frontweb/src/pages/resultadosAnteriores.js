@@ -43,12 +43,14 @@ export default function ResultadosAnteriores(){
 
   const handleCompararClick = () => {
     if (simulacionesSeleccionadas.length >= 2) {
-      navigate('/CompararSimulaciones', { state: { simulacionesSeleccionadas } });
+      const idsParam = simulacionesSeleccionadas.join(',');
+      navigate(`/CompararSimulaciones/${idsParam}`);
     } else {
       console.log('Entró al bloque else');
       alert('Selecciona al menos dos simulaciones para comparar.');
     }
   };
+  
 
   
   return (

@@ -6,3 +6,17 @@
     background-color: #91a2ff;
     border-radius: 20px;
 }
+
+.container-datos-reporte {
+    width: 90%;
+    max-width: 1200px;
+    margin: 80px auto 40px;
+    padding: 40px, 0;
+    position: static;
+  }
+
+  .container-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }

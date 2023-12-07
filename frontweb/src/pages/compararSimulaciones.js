@@ -1,36 +1,45 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getSimulacionPorId } from '../indexDB/indexDB';
 
-class CompararSimulaciones extends Component {
-  render() {
-    const { simulacionesSeleccionadas, simulaciones } = this.props;
+const CompararSimulaciones = () => {
+  const { ids } = useParams();
+  const simulacionIds = ids.split(',');
 
-    // Filtra las simulaciones seleccionadas
-    console.log(simulacionesSeleccionadas, simulaciones)
-    const simulacionesFiltradas = simulaciones.filter(simulacion =>
-      simulacionesSeleccionadas.includes(simulacion.id)
-    );
+  const [simulaciones, setSimulaciones] = useState([]);
 
-    
-    return (
-      <div>
-        <h1>Comparación de Simulaciones</h1>
-        {simulacionesFiltradas.map(simulacion => (
-          <div key={simulacion.id}>
-            <h2>Simulación ID: {simulacion.id}</h2>
-            <pre>{JSON.stringify(simulacion, null, 2)}</pre>
+  useEffect(() => {
+    const fetchSimulacionesDetails = async () => {
+      const detallesPromises = simulacionIds.map(simulacionId => getSimulacionPorId(simulacionId));
+
+      const detallesSimulaciones = await Promise.all(detallesPromises);
+
+      // Filtrar simulaciones que sean diferentes de null (es decir, simulaciones encontradas)
+      const simulacionesEncontradas = detallesSimulaciones.filter(simulacion => simulacion !== null);
+
+      setSimulaciones(simulacionesEncontradas);
+    };
+
+    fetchSimulacionesDetails();
+  }, [simulacionIds]);
+
+  return (
+    <div>
+      <h1>Comparación de Simulaciones</h1>
+      {simulaciones.map(simulacion => (
+        <div key={simulacion.id}>
+        <h2>Simulación ID: {simulacion.id}</h2>
+        {simulacion && (
+          <div>
+            <p>Modelo: {simulacion.vehiculoSeleccionado.modelo}</p>
+            <p>Marca: {simulacion.vehiculoSeleccionado.marca}</p>
+            {/* Agrega más detalles según sea necesario */}
           </div>
-        ))}
+        )}
       </div>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    simulacionesSeleccionadas: state.simulacionesSeleccionadas,
-    simulaciones: state.simulaciones,
-  };
+      ))}
+    </div>
+  );
 };
 
-export default connect(mapStateToProps)(CompararSimulaciones);
+export default CompararSimulaciones;
