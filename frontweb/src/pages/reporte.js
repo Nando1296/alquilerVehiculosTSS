@@ -111,7 +111,7 @@ class Reporte extends Component {
 
     return (
       <div className='reporte'>
-        <h1>Informe de Simulación</h1>
+        <h1>Reporte de Simulación</h1>
         {renderVehiculoSeleccionado()}
         <h3>Renta Total: {this.props.totalIngresos} Bs.</h3>
         <h3>Costo total de utilización de coches: {costoTotalUtilizacion} Bs.</h3>

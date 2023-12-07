@@ -112,25 +112,25 @@ class Simular extends Component {
         console.log('costo total no disponibles:  ', totalCostoNoDisponible);
 
         store.dispatch({
-          type: 'SET_SIMULACION_DATA',
-          payload: {
-              totalIngresos,
-              totalCostoOcioso,
-              totalCostoNoDisponible,
-              numeroDias: this.state.numeroDias,
-              simulacionData,
-          },
-      });
-      console.log(simulacionData);
+        type: 'SET_SIMULACION_DATA',
+        payload: {
+            totalIngresos,
+            totalCostoOcioso,
+            totalCostoNoDisponible,
+            numeroDias: this.state.numeroDias,
+            simulacionData,
+        },
+    });
+    console.log(simulacionData);
       //console.log("Estado del store después de despachar la simulacion:", store.getState());
         return simulacionData;
         
     };
 
     generarValorAleatorio() {
-      const valorAleatorio = Math.random();
-      return parseFloat(valorAleatorio.toFixed(4));
-  }
+        const valorAleatorio = Math.random();
+        return parseFloat(valorAleatorio.toFixed(4));
+    }
 
     calcularVehiculosARentar(valorAleatorioAutos, frecuenciaAutos){
         for(let i = 0; i < frecuenciaAutos.length; i++){
@@ -242,30 +242,30 @@ class Simular extends Component {
     }
 
     renderVehiculoSeleccionado() {
-      const { vehiculoSeleccionado } = this.props;
-  
-      if (!vehiculoSeleccionado) {
+    const { vehiculoSeleccionado } = this.props;
+
+    if (!vehiculoSeleccionado) {
         return null;
-      }
-  
-      return (
+    }
+
+    return (
         <div className={`card simular`}>
-          <img src={vehiculoSeleccionado.foto} alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`} className='foto-vehiculo' />
-          <div className="textos">
-            <h3>Datos del vehículo</h3>
-            <h5>Marca: {vehiculoSeleccionado.marca}</h5>
-            <h5>Modelo: {vehiculoSeleccionado.modelo}</h5>
-            <h5>Tipo: {vehiculoSeleccionado.tipo}</h5>
-            <h5>Costo: {vehiculoSeleccionado.costo} Bs.</h5>
-          </div>
+            <img src={vehiculoSeleccionado.foto} alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`} className='foto-vehiculo' />
+            <div className="textos">
+                <h3>Datos del vehículo</h3>
+                <h5>Marca: {vehiculoSeleccionado.marca}</h5>
+                <h5>Modelo: {vehiculoSeleccionado.modelo}</h5>
+                <h5>Tipo: {vehiculoSeleccionado.tipo}</h5>
+                <h5>Costo: {vehiculoSeleccionado.costo} Bs.</h5>
+            </div>
         </div>
-      );
+    );
     }
 
     render() {
 
         return (
-          <div className="container">
+        <div className="container">
             <div className="card simular">
                 {this.renderVehiculoSeleccionado()}
             </div>
@@ -312,7 +312,7 @@ class Simular extends Component {
                 </div>
             </form>
             {this.renderSimulacionData(this.state.simulacionData)}
-      </div>
+    </div>
         );
     }
 

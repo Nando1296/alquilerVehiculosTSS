@@ -74,7 +74,7 @@ const DetalleSimulacionAnterior = () => {
 
                     <div className='card'>
                         <div className='textosAnteriores'>
-                            <h1>Informe de Simulación</h1>
+                            <h1>Reporte de Simulación</h1>
                             <h3>Renta Total: {simulacion.totalIngresos} Bs.</h3>
                             <h3>Costo total de utilización de coches: {simulacion.costoTotalUtilizacion} Bs.</h3>
                             <h3>Costo Vehículo ocioso: {simulacion.totalCostoOcioso} Bs.</h3>
