@@ -63,6 +63,7 @@ export default function ResultadosAnteriores(){
                 <th>Marca</th>
                 <th>Tipo</th>
                 <th>Número de Días</th>
+                <th>Número de Vehiulos</th>
                 <th>Ganancia Neta</th>
                 <th>Foto</th>
                 <th>Acciones</th>
@@ -75,6 +76,7 @@ export default function ResultadosAnteriores(){
                   <td>{simulacion.vehiculoSeleccionado.marca}</td>
                   <td>{simulacion.vehiculoSeleccionado.tipo}</td>
                   <td>{simulacion.numeroDias}</td>
+                  <td>{simulacion.autosRentadosPorDia}</td>
                   <td>{simulacion.gananciaNeta.toFixed(2)} Bs.</td>
                   <td>
                     <img

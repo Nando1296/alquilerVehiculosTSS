@@ -64,6 +64,17 @@ class Reporte extends Component {
 
   render() {
 
+    const { vehiculoSeleccionado } = this.props;
+
+      if(!vehiculoSeleccionado) {
+        return (
+          <div className='reporte'>
+            <h1>Reporte de Simulación</h1>
+            <h3>No se ha seleccionado ningún vehiculo.</h3>
+          </div>
+        );
+      }
+
     return (
       <div className='reporte'>
         <h1>Informe de Simulación</h1>

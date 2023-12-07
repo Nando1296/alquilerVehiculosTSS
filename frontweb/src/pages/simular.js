@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './simular.css';
 import store from './store';
-//import './vehiculos.css';
 
 class Simular extends Component {
 
@@ -35,12 +34,6 @@ class Simular extends Component {
         this.setState({ simulacionData });
     
     };
-
-    /*handlePruebaClick = (e) => {
-        e.preventDefault();
-        const simulacionData = this.generateSimulacionData();
-        console.log('Datos de simulación generados:', simulacionData);
-    };*/
 
     generateSimulacionData = () => {
         let simulacionData = [];
@@ -213,7 +206,7 @@ class Simular extends Component {
                     <th>Número de Vehículo</th>
                     <th>Disponible</th>
                     <th>Valor Aleatorio Días</th>
-                    <th>Días a Rentar</th>
+                    <th>Días a Rentar</th>  
                     <th>Ingreso</th>
                     <th>Días No Disponible</th>
                 </tr>
