@@ -38,9 +38,10 @@ export default class Vehiculos extends Component {
     });
   }
 
-
   render() {
     return (
+      <div>
+      <h2 className='title-vehiculo'>Vehiculos</h2>
       <div className="vehiculos">
           <div className="contenedor-vehiculos">
             {this.state.vehiculos.map(vehiculo => (
@@ -61,7 +62,7 @@ export default class Vehiculos extends Component {
             ))}
           </div>
 
-          <div className="ml-auto">
+          <div className="btn-vehiculo">
             <Link to="/Renta">
               <button id="btn2" 
               className="btn2 btn-primary" 
@@ -73,8 +74,7 @@ export default class Vehiculos extends Component {
             </Link>
           </div>
       </div>
+      </div>
     )
   }
 }
-
-

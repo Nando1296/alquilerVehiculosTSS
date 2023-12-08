@@ -38,10 +38,10 @@ export default class Costos extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="main">
+        <div className="container-costos">
+          <div className="main-costos">
             <div className="main-center">
-              <h3>Costos</h3>
+              <h3 className='h3-costo'>Costos</h3>
               <form className="" method="post" action="#">
                 <div className="form-group">
                   <label htmlFor="costoAnual">Costo promedio anual por coche</label>
@@ -92,7 +92,7 @@ export default class Costos extends Component {
                   </div>
                 </div>
 
-                <div className="ml-auto">
+                <div className="btn-costos">
                   <Link to="/Simular">
                     <button
                       id="btn"
@@ -112,3 +112,4 @@ export default class Costos extends Component {
     );
   }
 }
+

@@ -1,19 +1,39 @@
-
-p{
+.textp {
+   font-family: 'Times New Roman', Times, serif;
+   background-color: aliceblue;
+   width: 80%;
    font-size: 20px;
    color: black;
-   font-weight: 500;
    line-height: 3rem;
    justify-content: center;
-   border-radius: 0;
-   padding: 100px;
+   border-radius: 15px;
+   padding: 50px;
+   border: 2px solid #050505;
 }
-
+.textContainer {
+   flex-direction: row;
+   
+   display: flex;
+   justify-content:space-between;
+   align-items: center;
+   padding-left: 10%;
+   padding-right: 5%;
+   
+   
+}
 .btn1 {
    width: 240px;
    height: 80px;
-   margin-top: 20px; 
-   margin-left: 960px; 
+   box-shadow: #050505 0px 0px 0px 2px inset;
+   font-size: 30px;
+   margin-top: 20px;
    background-color: #91a2ff;
-   border-radius: 20px;
+   border-radius: 15px;
+}
+.container-enunciado{
+   display: flex;
+}
+.casoEstudio {
+   padding-top: 2%;
+   padding-left: 2%;
 }

@@ -1,3 +1,9 @@
+.title-vehiculo{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 5%;
+    font-size: 50px;
+}
 .vehiculos{
     width: 90%;
     max-width: 1200px;
@@ -10,6 +16,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    
 }
 
 .card{
@@ -26,7 +33,6 @@
     justify-content: center; /* Centrado horizontal *//* Esto asegura el centrado vertical en la pantalla completa, ajusta según tus necesidades */
 }
 
-
 .card .textos{
     height: 100%;
     display: flex;
@@ -34,14 +40,20 @@
     justify-content: center;
     align-items: center;
 }
+.btn-vehiculo{
+    top: 22%;
+    left: 70%;
+    position: absolute;
+
+}
 
 .btn2 {
     width: 240px;
     height: 80px;
-    margin-top: 20px; 
-    margin-left: 960px; 
+    font-size: 30px;
     background-color: #91a2ff;
-    border-radius: 20px;
+    border-radius: 15px;
+ 
 }
 
 .card.seleccionado {

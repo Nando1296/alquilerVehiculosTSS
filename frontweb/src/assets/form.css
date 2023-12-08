@@ -1,37 +1,46 @@
-.main{
-    padding: 60px 0;
+.container-costos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.main input,
-.main input::-webkit-input-placeholder {
-   font-size: 11px;
-   padding-top: 3px;
+.main-costos{
+    background-color: white;
+    width: 600px;
+    margin-top: 5%;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    height: 400px;
 }
 .main-center{
-    margin-top: 30px;
-    margin: 0 auto;
-    max-width: 400px;
-   padding: 10px 40px;
-   background:#ffffff;
-       color: #000000;
-   text-shadow: none;
-   -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
--moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-border-radius: 20px;
-
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.h3-costo{
+    font-size: 40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top:3%;
+    padding-bottom: 2%;
+}
+.form-group{
+    font-size: 25px;
 
 }
-span.input-group-addon i {
-   color: #009edf;
-   font-size: 17px;
+
+.form-control{
+    border: #000000 1px   solid;
+    border-radius: 10px;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px; 
 }
-.btn {
-    display: block;
-  padding: 0.5rem 1rem;
-  width: 200px;
-  margin: 0 auto;
-  margin-top: 15px;
-  background-color: #91a3ff;
-  border-color: #91a3ff;
+.btn-costos{
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn{
+    width: 200px;
+    font-size: 20px;
 }
