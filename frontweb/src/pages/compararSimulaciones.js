@@ -50,29 +50,30 @@ const CompararSimulaciones = () => {
     const porcentajeGananciaNeta = (simulacion.gananciaNeta / simulacion.totalIngresos) * 100;
 
     return (
-      <div className={`card simular`} style={isConveniente ? cardStyle : {}} key={vehiculoSeleccionado.modelo}>
-        {rutaFoto && <img src={imagenSrc} alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`} className='foto-vehiculo' />}
+      
+      <div id="Analisis-vehiculo" className={`card simular`} style={isConveniente ? cardStyle : {}} key={vehiculoSeleccionado.modelo}>
+        {rutaFoto && <img id='vehiculo' src={imagenSrc} alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`} className='foto-vehiculo' />}
         <div className="textos">
-          <h3>Datos del vehículo</h3>
-          <h5>Marca: {vehiculoSeleccionado.marca}</h5>
-          <h5>Modelo: {vehiculoSeleccionado.modelo}</h5>
-          <h5>Tipo: {vehiculoSeleccionado.tipo}</h5>
-          <h5>Costo: {vehiculoSeleccionado.costo} Bs.</h5>
-          <h5>Renta Total: {simulacion.totalIngresos.toFixed(2)} Bs.</h5>
-          <h5>Costo total de utilización de coches: {simulacion.costoTotalUtilizacion.toFixed(2)} Bs.</h5>
-          <h5>Costo Vehículo ocioso: {simulacion.totalCostoOcioso.toFixed(2)} Bs.</h5>
-          <h5>Costo no disponible: {simulacion.totalCostoNoDisponible.toFixed(2)} Bs.</h5>
-          <h5>Total Egresos: {simulacion.totalEgresos.toFixed(2)} Bs.</h5>
-          <h5>Ganancia neta: {simulacion.gananciaNeta.toFixed(2)} Bs.</h5>
-          <h5>Porcentaje de Ganancia Neta: {porcentajeGananciaNeta.toFixed(2)} %</h5>
+          <h3 className='title-datos'><b>Datos del vehículo</b></h3>
+          <h5 className='title'>Marca: {vehiculoSeleccionado.marca}</h5>
+          <h5 className='title'>Modelo: {vehiculoSeleccionado.modelo}</h5>
+          <h5 className='title'>Tipo: {vehiculoSeleccionado.tipo}</h5>
+          <h5 className='title'>Costo: {vehiculoSeleccionado.costo} Bs.</h5>
+          <h5 className='title'>Renta Total: {simulacion.totalIngresos.toFixed(2)} Bs.</h5>
+          <h5 className='title'>Costo total de utilización de coches: {simulacion.costoTotalUtilizacion.toFixed(2)} Bs.</h5>
+          <h5 className='title'>Costo Vehículo ocioso: {simulacion.totalCostoOcioso.toFixed(2)} Bs.</h5>
+          <h5 className='title'>Costo no disponible: {simulacion.totalCostoNoDisponible.toFixed(2)} Bs.</h5>
+          <h5 className='title'>Total Egresos: {simulacion.totalEgresos.toFixed(2)} Bs.</h5>
+          <h5 className='title'>Ganancia neta: {simulacion.gananciaNeta.toFixed(2)} Bs.</h5>
+          <h5 className='title'>Porcentaje de Ganancia Neta: {porcentajeGananciaNeta.toFixed(2)} %</h5>
         </div>
       </div>
     );
   };
 
   return (
-    <div>
-    <h1>Comparar Simulaciones</h1>
+    <div className='container-comparar'>
+    <h1 className='title-comparar'>Comparar Simulaciones</h1>
     <div className='comparar'>
       <div className='contenedor-vehiculos'>
         {renderSimulacionData(simulacion1, simulacionConveniente === simulacion1)}

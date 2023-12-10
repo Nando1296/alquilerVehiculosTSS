@@ -1,8 +1,16 @@
-.btn7 {
+#btn7 {
     width: 240px;
     height: 80px;
     margin-top: 20px; 
     margin-left: 960px; 
     background-color: #91a2ff;
     border-radius: 20px;
+    float: right;
+    margin-top: -45%;
+    margin-right: 5%;
+
+}
+.resultados{
+    margin-top: 5%;
+   margin-left: 20%;
 }

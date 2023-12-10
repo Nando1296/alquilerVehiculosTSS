@@ -12,7 +12,6 @@ table {
    
 }
 
-
 th, td {
     border: 1px solid #050505;
     padding: 8px;
@@ -23,7 +22,11 @@ th, td {
 th {
     background-color: #91A3FF;
 }
-
+ .btn-primary{
+    float: right;
+    margin-right: 50px;
+    
+ }
 .btn3 {
     width: 240px;
     height: 80px;

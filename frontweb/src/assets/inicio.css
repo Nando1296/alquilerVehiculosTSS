@@ -21,14 +21,16 @@
    
    
 }
-.btn1 {
+#btn1 {
    width: 240px;
    height: 80px;
    box-shadow: #050505 0px 0px 0px 2px inset;
    font-size: 30px;
-   margin-top: 20px;
+   margin-top: -250px;
+   margin-right: -20px;
    background-color: #91a2ff;
    border-radius: 15px;
+
 }
 .container-enunciado{
    display: flex;

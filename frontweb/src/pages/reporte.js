@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {saveSimulacion} from '../indexDB/indexDB';
-import { Link } from 'react-router-dom';
-import './reporte.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { saveSimulacion } from "../indexDB/indexDB";
+import { Link } from "react-router-dom";
+import "./reporte.css";
 
 class Reporte extends Component {
-
   state = {
     simulacionGuardada: false,
   };
 
   handleGuardarSimulación = () => {
-    if(!this.state.simulacionGuardada){
+    if (!this.state.simulacionGuardada) {
       const {
         vehiculoSeleccionado,
         autosRentadosPorDia,
@@ -26,15 +25,18 @@ class Reporte extends Component {
         totalIngresos,
         totalCostoOcioso,
         totalCostoNoDisponible,
-        
       } = this.props;
-  
+
       // Calcular valores
-      const costoTotalUtilizacion = ((costoAnual / 365) * numeroDias * autosRentadosPorDia );
-      const totalEgresos = (parseFloat(costoTotalUtilizacion) + parseFloat(totalCostoOcioso) + parseFloat(totalCostoNoDisponible));
-      const gananciaNeta = (totalIngresos - parseFloat(totalEgresos));
+      const costoTotalUtilizacion =
+        (costoAnual / 365) * numeroDias * autosRentadosPorDia;
+      const totalEgresos =
+        parseFloat(costoTotalUtilizacion) +
+        parseFloat(totalCostoOcioso) +
+        parseFloat(totalCostoNoDisponible);
+      const gananciaNeta = totalIngresos - parseFloat(totalEgresos);
       //const {marca, modelo, tipo, costo} = vehiculoSeleccionado;
-  
+
       saveSimulacion({
         vehiculoSeleccionado,
         autosRentadosPorDia,
@@ -54,7 +56,7 @@ class Reporte extends Component {
         gananciaNeta,
       });
 
-      this.setState({simulacionGuardada: true });
+      this.setState({ simulacionGuardada: true });
     }
   };
 
@@ -63,7 +65,6 @@ class Reporte extends Component {
   }
 
   render() {
-
     const {
       vehiculoSeleccionado,
       costoAnual,
@@ -74,30 +75,38 @@ class Reporte extends Component {
       numeroDias,
     } = this.props;
 
-    const costoTotalUtilizacion = ((costoAnual / 365) * numeroDias * autosRentadosPorDia );
-    const totalEgresos = (parseFloat(costoTotalUtilizacion) + parseFloat(totalCostoOcioso) + parseFloat(totalCostoNoDisponible));
-    const gananciaNeta = (totalIngresos - parseFloat(totalEgresos));
-    
+    const costoTotalUtilizacion =
+      (costoAnual / 365) * numeroDias * autosRentadosPorDia;
+    const totalEgresos =
+      parseFloat(costoTotalUtilizacion) +
+      parseFloat(totalCostoOcioso) +
+      parseFloat(totalCostoNoDisponible);
+    const gananciaNeta = totalIngresos - parseFloat(totalEgresos);
 
-      if(!vehiculoSeleccionado) {
-        return (
-          <div className='reporte'>
-            <h1>Reporte de Simulación</h1>
-            <h3>No se ha seleccionado ningún vehiculo.</h3>
-          </div>
-        );
-      }
+    if (!vehiculoSeleccionado) {
+      return (
+        <div className="reporte">
+          <h1>Reporte de Simulación</h1>
+          <h3>No se ha seleccionado ningún vehiculo.</h3>
+        </div>
+      );
+    }
 
-      const renderVehiculoSeleccionado = () => {
-        const { vehiculoSeleccionado } = this.props;
-  
+    const renderVehiculoSeleccionado = () => {
+      const { vehiculoSeleccionado } = this.props;
+
       if (!vehiculoSeleccionado) {
         return null;
       }
-  
+
       return (
         <div className={`card simular`}>
-          <img src={vehiculoSeleccionado.foto} alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`} className='foto-vehiculo' />
+          <img
+            src={vehiculoSeleccionado.foto}
+            alt={`${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`}
+            className="foto-vehiculo"
+          />
+
           <div className="textos">
             <h3>Datos del vehículo</h3>
             <h5>Marca: {vehiculoSeleccionado.marca}</h5>
@@ -110,40 +119,52 @@ class Reporte extends Component {
     };
 
     return (
-      <div className='reporte'>
+      <div className="reporte">
         <h1>Reporte de Simulación</h1>
         {renderVehiculoSeleccionado()}
-        <h3>Renta Total: {this.props.totalIngresos} Bs.</h3>
-        <h3>Costo total de utilización de coches: {costoTotalUtilizacion} Bs.</h3>
-        <h3>Costo total carro ocioso: {this.props.totalCostoOcioso} Bs.</h3>
-        <h3>Costo total no disponible: {this.props.totalCostoNoDisponible} Bs.</h3>
-        <h2>Total Egresos: {totalEgresos} Bs.</h2>
-        <h2>Ganancia neta: {gananciaNeta} Bs.</h2>
-        
-        <h3>Se generan unos ingresos brutos de {this.props.totalIngresos} Bs. en un periodo de {this.props.numeroDias} días.</h3>
-        <h3>Se genera un gasto de {totalEgresos} Bs.</h3>
-        <h3>Se genera una ganancia de {gananciaNeta} Bs.</h3>
+        <div className="reporte-1">
+          <h3 className="title">Renta Total: {this.props.totalIngresos} Bs.</h3>
+          <h3 className="title">
+            Costo total de utilización de coches: {costoTotalUtilizacion} Bs.
+          </h3>
+          <h3 className="title">
+            Costo total carro ocioso: {this.props.totalCostoOcioso} Bs.
+          </h3>
+          <h3 className="title">
+            Costo total no disponible: {this.props.totalCostoNoDisponible} Bs.
+          </h3>
+          <h2 className="title">Total Egresos: {totalEgresos} Bs.</h2>
+          <h2 className="title">Ganancia neta: {gananciaNeta} Bs.</h2>
 
+          <h3 className="title">
+            Se generan unos ingresos brutos de {this.props.totalIngresos} Bs. en
+            un periodo de {this.props.numeroDias} días.
+          </h3>
+          <h3 className="title">Se genera un gasto de {totalEgresos} Bs.</h3>
+          <h3 className="title">
+            Se genera una ganancia de {gananciaNeta} Bs.
+          </h3>
+        </div>
         <div className="ml-auto">
-            <Link to="/ResultadosAnteriores">
-              <button id="btn6" 
-              className="btn6 btn-primary" 
+          <Link to="/ResultadosAnteriores">
+            <button
+              id="btn6"
+              className="btn6 btn-primary"
               type=""
               onClick={this.handleGuardarSimulación}
               disabled={this.state.simulacionGuardada}
-              >
-                Guardar Simulación
-              </button>
-            </Link>
-          </div>
+            >
+              Guardar Simulación
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-
-  console.log('estado de props:  ', state )
+  console.log("estado de props:  ", state);
   return {
     //Vehiculos
     vehiculoSeleccionado: state.vehiculoSeleccionado,
